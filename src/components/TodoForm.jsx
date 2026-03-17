@@ -1,7 +1,7 @@
 import { useTodoContext } from '../context/TodoContext'
 
 function TodoForm() {
-    const { addTodo } = useTodoContext()
+    const { addTodo, removeAllTodos } = useTodoContext()
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
@@ -17,7 +17,12 @@ function TodoForm() {
     return (
         <form onSubmit={handleOnSubmit}>
             <input placeholder="할 일을 입력해주세요" type="text" name="input" />
-            <button type="submit">추가</button>
+            <button type="submit" name="submit">
+                추가
+            </button>
+            <button type="button" name="delete" onClick={removeAllTodos}>
+                모두 삭제
+            </button>
         </form>
     )
 }

@@ -20,7 +20,11 @@ function useTodos() {
         setTodos(toggleTodo)
     }
 
-    return { lastId, todos, setTodos, addTodo, removeTodo, toggleTodo }
+    const removeAllTodos = () => {
+        setTodos([])
+    }
+
+    return { lastId, todos, setTodos, addTodo, removeTodo, toggleTodo, removeAllTodos }
 }
 
 export default useTodos

@@ -1,12 +1,15 @@
-import TodoForm from './components/TodoForm'
-import TodoList from './components/TodoList'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Main from './pages/Main'
+import Todo from './pages/Todo'
 
 function App() {
     return (
-        <>
-            <TodoForm />
-            <TodoList />
-        </>
+        <BrowserRouter>
+            <Routes>
+                <Route index element={<Main />} />
+                <Route path="todo" element={<Todo />} />
+            </Routes>
+        </BrowserRouter>
     )
 }
 
