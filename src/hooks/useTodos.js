@@ -1,13 +1,18 @@
-import { useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function useTodos() {
-    const lastId = useRef(0)
-    const [todos, setTodos] = useState([])
+    const [todos, setTodos] = useState(() => {
+        const savedTodos = localStorage.getItem('todos')
+        return savedTodos ? JSON.parse(savedTodos) : []
+    })
+
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(todos))
+    }, [todos])
 
     const addTodo = (text) => {
-        const todo = { id: lastId.current, todo: text, completed: false }
+        const todo = { id: crypto.randomUUID(), todo: text, completed: false }
         setTodos([...todos, todo])
-        lastId.current++
     }
 
     const removeTodo = (id) => {
@@ -24,7 +29,7 @@ function useTodos() {
         setTodos([])
     }
 
-    return { lastId, todos, setTodos, addTodo, removeTodo, toggleTodo, removeAllTodos }
+    return { todos, setTodos, addTodo, removeTodo, toggleTodo, removeAllTodos }
 }
 
 export default useTodos
