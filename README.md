@@ -55,6 +55,8 @@ src/
 ├── pages/
 │ ├── Main.jsx # 메인 페이지
 │ └── Todo.jsx # TODO 관리 페이지
+├── utils/
+│ └── storage.js # 로컬 스토리지 처리
 ├── App.jsx # 라우팅 설정
 └── main.jsx # 앱 진입점
 ```
