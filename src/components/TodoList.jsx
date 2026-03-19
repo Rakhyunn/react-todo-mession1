@@ -3,6 +3,7 @@ import TodoItem from './TodoItem'
 
 function TodoList() {
     const { todos, removeAllTodos } = useTodoContext()
+
     return (
         <div>
             <button

@@ -2,6 +2,7 @@ import { useTodoContext } from '../context/TodoContext'
 
 function TodoItem({ todo }) {
     const { toggleTodo, removeTodo } = useTodoContext()
+
     return (
         <li
             className={`flex items-center gap-3 px-4 py-3.5 rounded-xl border transition-opacity mb-2 ${

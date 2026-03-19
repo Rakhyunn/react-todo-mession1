@@ -4,11 +4,13 @@ import { useTodoContext } from '../context/TodoContext'
 function Main() {
     const { todos } = useTodoContext()
 
+    // 할 일 개수 및 진행률
     const count = todos.length
     const leftCount = todos.filter((todo) => todo.completed == false).length
     const completedCount = todos.filter((todo) => todo.completed == true).length
     const percent = (completedCount / count) * 100
 
+    // 오늘 날짜
     const today = new Date()
     const year = today.getFullYear()
     const month = today.getMonth() + 1
@@ -29,7 +31,7 @@ function Main() {
                 할 일을 하나씩 해치워봐요
             </div>
 
-            {/* 카운트 카드 */}
+            {/* 카운트 */}
             <div className="relative z-10 mt-11 flex gap-3 w-full max-w-sm">
                 <div className="flex-1 bg-white/[0.06] border border-white/10 rounded-xl py-5 text-center">
                     <p className="text-3xl font-bold text-indigo-300">{leftCount}</p>
@@ -41,7 +43,7 @@ function Main() {
                 </div>
             </div>
 
-            {/* 진행률 바 */}
+            {/* 진행률 */}
             <div className="relative z-10 mt-3 w-full max-w-sm bg-white/[0.06] border border-white/10 rounded-xl px-5 py-4">
                 <div className="flex justify-between items-center mb-2.5">
                     <span className="text-xs text-slate-500">진행률</span>

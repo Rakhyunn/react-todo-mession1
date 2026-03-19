@@ -5,8 +5,9 @@ function TodoForm() {
     const { addTodo } = useTodoContext()
 
     const handleOnSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault() // form 기본 동작(페이지 새로고침) 방지
         const form = e.target
+        // 공백만 입력한 경우도 막기 위해 trim() 사용
         if (form.input.value.trim().length == 0) {
             alert('할 일을 입력해주세요')
             return
