@@ -4,7 +4,7 @@ export function getTodos(key) {
         return saved ? JSON.parse(saved) : [] // 비어있을 때를 위한 삼항연산
     } catch (err) {
         console.log('load error')
-        return null
+        return []
     }
 }
 

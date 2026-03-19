@@ -8,7 +8,7 @@ function useTodos() {
     // useEffect로 todos 변경 시 자동 저장
     useEffect(() => {
         saveTodos('todos', todos)
-    })
+    }, [todos])
 
     // ID는 1씩 추가하는 형식이 아닌 랜덤 ID 생성
     const addTodo = (text) => {
