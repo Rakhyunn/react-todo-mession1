@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react'
+import { getTodos, saveTodos } from '../utils/storage'
 
 function useTodos() {
     // 로컬 스토리지 가져오기
-    const [todos, setTodos] = useState(() => {
-        const savedTodos = localStorage.getItem('todos')
-        return savedTodos ? JSON.parse(savedTodos) : [] // 비어있을 때를 위한 삼항연산
-    })
+    const [todos, setTodos] = useState(getTodos('todos'))
 
     // useEffect로 todos 변경 시 자동 저장
     useEffect(() => {
-        localStorage.setItem('todos', JSON.stringify(todos))
-    }, [todos])
+        saveTodos('todos', todos)
+    })
 
     // ID는 1씩 추가하는 형식이 아닌 랜덤 ID 생성
     const addTodo = (text) => {
