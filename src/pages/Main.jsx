@@ -6,9 +6,9 @@ function Main() {
 
     // 할 일 개수 및 진행률
     const count = todos.length
-    const leftCount = todos.filter((todo) => todo.completed == false).length
-    const completedCount = todos.filter((todo) => todo.completed == true).length
-    const percent = (completedCount / count) * 100
+    const leftCount = todos.filter((todo) => !todo.completed).length
+    const completedCount = todos.filter((todo) => todo.completed).length
+    const percent = count === 0 ? 0 : Math.round((completedCount / count) * 100)
 
     // 오늘 날짜
     const today = new Date()
@@ -47,14 +47,12 @@ function Main() {
             <div className="relative z-10 mt-3 w-full max-w-sm bg-white/[0.06] border border-white/10 rounded-xl px-5 py-4">
                 <div className="flex justify-between items-center mb-2.5">
                     <span className="text-xs text-slate-500">진행률</span>
-                    <span className="text-xs text-indigo-300 font-medium">
-                        {isNaN(percent) ? 0 : Math.round(percent)}%
-                    </span>
+                    <span className="text-xs text-indigo-300 font-medium">{percent}%</span>
                 </div>
                 <div className="bg-white/[0.08] rounded-full h-1.5 overflow-hidden">
                     <div
                         className="bg-gradient-to-r from-indigo-500 to-violet-400 h-full rounded-full transition-all duration-500"
-                        style={{ width: `${isNaN(percent) ? 0 : percent}%` }}
+                        style={{ width: `${percent}%` }}
                     />
                 </div>
             </div>

@@ -24,8 +24,8 @@ function useTodos() {
     }
 
     const toggleTodo = (id) => {
-        const toggleTodo = todos.map((todo) => (todo.id == id ? { ...todo, completed: !todo.completed } : todo))
-        setTodos(toggleTodo)
+        const updateTodo = todos.map((todo) => (todo.id == id ? { ...todo, completed: !todo.completed } : todo))
+        setTodos(updateTodo)
     }
 
     const removeAllTodos = () => {
